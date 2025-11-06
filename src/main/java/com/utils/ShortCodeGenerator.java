@@ -1,8 +1,11 @@
 package com.utils;
 
+import org.springframework.stereotype.Component;
+
 import java.security.SecureRandom;
 import java.util.Base64;
 
+@Component
 public class ShortCodeGenerator {
     private final SecureRandom random = new SecureRandom();
 
