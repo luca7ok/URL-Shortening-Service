@@ -47,7 +47,6 @@
             <scope>test</scope>
         </dependency>
 
-
         <!-- https://mvnrepository.com/artifact/software.amazon.awssdk/dynamodb -->
         <dependency>
             <groupId>software.amazon.awssdk</groupId>

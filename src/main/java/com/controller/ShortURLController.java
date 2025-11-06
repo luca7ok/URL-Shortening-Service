@@ -14,6 +14,7 @@ import java.net.URI;
 
 @Controller
 @RequestMapping("/")
+@SuppressWarnings("unused")
 public class ShortURLController {
     private final ShortURLService shortURLService;
 

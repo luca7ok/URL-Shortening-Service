@@ -13,7 +13,7 @@ public class ShortURLRepository {
     private final DynamoDbIndex<ShortURL> shortCodeIndex;
 
     public ShortURLRepository(DynamoDbEnhancedClient dynamoDbEnhancedClient) {
-        shortURLTable = dynamoDbEnhancedClient.table("ShortURLs", TableSchema.fromBean(ShortURL.class));
+        shortURLTable = dynamoDbEnhancedClient.table("shortURLs", TableSchema.fromBean(ShortURL.class));
         shortCodeIndex = shortURLTable.index("shortCode-index");
     }
 
