@@ -22,8 +22,7 @@ public class ShortURLService {
         do {
             shortCode = shortCodeGenerator.generateShortCode();
         } while (shortURLRepository.findByShortCode(shortCode).isPresent());
-
-
+        
         ShortURL shortURL = new ShortURL();
         shortURL.setLongURL(longURL);
         shortURL.setShortCode(shortCode);
@@ -35,6 +34,6 @@ public class ShortURLService {
     public String getLongURL(String shortCode) {
         return shortURLRepository.findByShortCode(shortCode)
                 .map(ShortURL::getLongURL)
-                .orElseThrow(() -> new URLNotFoundException("URL not found for short code: " + shortCode));
+                .orElseThrow(() -> new URLNotFoundException("This short URL doesn't exist"));
     }
 }
