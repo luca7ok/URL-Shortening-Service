@@ -44,7 +44,7 @@ public class ShortURLController {
                     .location(URI.create(longURL))
                     .build();
         } catch (RuntimeException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 }
