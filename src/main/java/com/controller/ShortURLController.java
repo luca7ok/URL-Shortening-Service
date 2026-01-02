@@ -14,7 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/api/v1/")
 @SuppressWarnings("unused")
 public class ShortURLController {
     private final ShortURLService shortURLService;
