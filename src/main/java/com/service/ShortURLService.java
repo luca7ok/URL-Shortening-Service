@@ -6,6 +6,8 @@ import com.exceptions.URLNotFoundException;
 import com.utils.ShortCodeGenerator;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @Service
 public class ShortURLService {
@@ -18,17 +20,23 @@ public class ShortURLService {
     }
 
     public ShortURL createShortURL(String longURL) {
+        Optional<ShortURL> existingShortURL = shortURLRepository.findByLongURL(longURL);
+
+        if (existingShortURL.isPresent()) {
+            return existingShortURL.get();
+        }
+
         String shortCode;
         do {
             shortCode = shortCodeGenerator.generateShortCode();
         } while (shortURLRepository.findByShortCode(shortCode).isPresent());
-        
-        ShortURL shortURL = new ShortURL();
-        shortURL.setLongURL(longURL);
-        shortURL.setShortCode(shortCode);
 
-        shortURLRepository.save(shortURL);
-        return shortURL;
+        ShortURL newShortURL = new ShortURL();
+        newShortURL.setLongURL(longURL);
+        newShortURL.setShortCode(shortCode);
+
+        shortURLRepository.save(newShortURL);
+        return newShortURL;
     }
 
     public String getLongURL(String shortCode) {

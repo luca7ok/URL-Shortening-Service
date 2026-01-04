@@ -39,6 +39,7 @@ public class ShortURL {
     }
 
     @DynamoDbAttribute("longURL")
+    @DynamoDbSecondaryPartitionKey(indexNames = {"longURL-index"})
     public String getLongURL() {
         return longURL;
     }
